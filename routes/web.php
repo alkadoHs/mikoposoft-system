@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Users;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -14,5 +15,9 @@ Route::view('dashboard', 'dashboard')
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('users', Users::class)->name('users');
+});
 
 require __DIR__.'/auth.php';

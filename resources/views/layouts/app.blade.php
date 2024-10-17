@@ -16,22 +16,31 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            <livewire:layout.navigation />
+        <div class="flex items-start text-zinc-500 dark:text-zinc-400 min-h-screen bg-zinc-100 dark:bg-zinc-900">
+            <aside class="sticky top-0 h-dvh w-[280px] text-zinc-300 bg-blue-950 dark:bg-blue-950/10  border-r dark:border-zinc-700">
+                <div class="sticky top-0 h-16 px-3  bg-blue-950  dark:bg-blue-950/10 border-b border-blue-900 dark:border-zinc-700"> Logo</div>
+                <div class="px-3 py-4">
+                    <nav>
+                        <livewire:layout.sidebar />
+                    </nav>
+                </div>
+            </aside>
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+            <div class="grid w-full">
+                <livewire:layout.navigation />
+                <!-- Page Heading -->
+                @if (isset($header))
+                    <header class="bg-white dark:bg-zinc-800 shadow">
+                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                            {{ $header }}
+                        </div>
+                    </header>
+                @endif
+                <!-- Page Content -->
+                <main>
+                    {{ $slot }}
+                </main>
+            </div>
         </div>
 
         <x-toaster-hub />
