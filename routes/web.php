@@ -6,7 +6,7 @@ use Livewire\Volt\Volt;
 
 Route::view('/', 'welcome');
 
-Volt::route('test', 'test');
+Volt::route('test', 'test')->name('test');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
